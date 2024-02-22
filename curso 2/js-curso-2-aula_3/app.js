@@ -1,4 +1,5 @@
 let listaDeNumerosSorteados = [];
+let numeroLimite = 10;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
 
@@ -35,14 +36,18 @@ function verificarChute() {
 }
 
 function gerarNumeroAleatorio() {
-    let numeroEscolhido = parseInt(Math.random() * 4 + 1);
+    let numeroEscolhido = parseInt(Math.random() * numeroLimite + 1);
+    let quantidadeNumeros = listaDeNumerosSorteados.length;
+    if ( quantidadeNumeros == 3) {
+        listaDeNumerosSorteados = [];
+    };
     if( listaDeNumerosSorteados.includes(numeroEscolhido)) {
         return gerarNumeroAleatorio();
     } else {
         listaDeNumerosSorteados.push(numeroEscolhido);
         return numeroEscolhido;
-    }
-}
+    };
+};
 
 function limparCampo() {
     chute = document.querySelector('input');
